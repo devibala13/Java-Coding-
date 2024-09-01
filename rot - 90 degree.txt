@@ -1,0 +1,47 @@
+#include <stdio.h>
+void swap(int *a,int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+    
+}
+int main()
+{
+    int r;
+    int a[20][20];
+    int i,j;
+    printf("Enter size of the square matrix:");
+    scanf("%d",&r);
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<r;j++)
+        {
+            scanf("%d",&a[i][j]);
+        }
+    }
+    for(i=0;i<r;i++)
+    {
+        for(j=i+1;j<r;j++)
+        {
+            swap(&a[i][j],&a[j][i]);
+        }
+    }
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<r/2;j++)
+        {
+            swap(&a[i][j],&a[i][r-j-1]);
+        }
+    }
+    printf("Matrix after rotation:");
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<r;j++)
+        {
+            printf("%d ",a[i][j]);
+        }
+        printf("\n");
+    }
+}
